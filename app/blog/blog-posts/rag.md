@@ -1,3 +1,11 @@
+---
+title: "Testing RAG in the Wild: Ghana’s Health Policies as a Case Study"
+date: "2024-05-17"
+readTime: "7 min read"
+tags: ["Machine Learning", "NLP", "Research"]
+slug: "building-lexafriq"
+---
+
 # Testing RAG in the Wild: Ghana’s Health Policies as a Case Study
 
 Can Retrieval-Augmented Generation (RAG) work reliably on real-world government PDFs in low-resource domains like public health in Ghana? That was the central question behind this project.\_

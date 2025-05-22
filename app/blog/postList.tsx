@@ -22,6 +22,8 @@ type Props = {
 };
 
 export default function PostList({ posts }: Props) {
+  // return <pre>{JSON.stringify(posts, null, 4)}</pre>; // For debugging purposes
+
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
 
@@ -35,7 +37,6 @@ export default function PostList({ posts }: Props) {
     const matchesTag = selectedTag ? post.tags.includes(selectedTag) : true;
     return matchesSearch && matchesTag;
   });
-
   return (
     <div className="container mt-12">
       <div className="flex flex-col md:flex-row gap-6 mb-12">

@@ -12,7 +12,7 @@ export type PostMetadata = {
 };
 
 export function getAllPosts(): PostMetadata[] {
-  const postsDirectory = path.join(process.cwd(), "app/brain-dump/blog-posts");
+  const postsDirectory = path.join(process.cwd(), "app/blog/blog-posts");
   const filenames = fs.readdirSync(postsDirectory);
 
   return filenames.map((filename) => {
