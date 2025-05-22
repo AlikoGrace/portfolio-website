@@ -3,7 +3,7 @@ title: "Testing RAG in the Wild: Ghana’s Health Policies as a Case Study"
 date: "2024-05-17"
 readTime: "7 min read"
 tags: ["Machine Learning", "NLP", "Research"]
-slug: "building-lexafriq"
+slug: "rag"
 ---
 
 # Testing RAG in the Wild: Ghana’s Health Policies as a Case Study
