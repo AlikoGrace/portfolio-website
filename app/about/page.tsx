@@ -1,7 +1,7 @@
 "use client";
 
 import type React from "react";
-
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,12 +10,24 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import SkillCard from "@/components/ui/skill-card";
+import { Navigation } from "@/components/navigation";
 
 import { PageHeader } from "@/components/page-header";
 
 export default function AboutPage() {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   return (
     <div className="min-h-screen bg-black text-white pb-20">
+      <Navigation scrollY={scrollY} />
       <PageHeader
         title="About Me"
         description="Applied NLP Researcher & Full-Stack Developer"

@@ -1,59 +1,78 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import { motion } from "framer-motion"
-import Link from "next/link"
-import { Bot, Github, Linkedin, Mail, MapPin, Send } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { useToast } from "@/hooks/use-toast"
-import { PageHeader } from "@/components/page-header"
-import { GraceBot } from "@/components/grace-bot"
-
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { Bot, Github, Linkedin, Mail, MapPin, Send } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useToast } from "@/hooks/use-toast";
+import { PageHeader } from "@/components/page-header";
+import { GraceBot } from "@/components/grace-bot";
+import { Navigation } from "@/components/navigation";
 export default function ContactPage() {
-  const { toast } = useToast()
+  const { toast } = useToast();
   const [formState, setFormState] = useState({
     name: "",
     email: "",
     subject: "",
     message: "",
-  })
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormState((prev) => ({ ...prev, [name]: value }))
-  }
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormState((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+    e.preventDefault();
+    setIsSubmitting(true);
 
     // Simulate form submission
     setTimeout(() => {
       toast({
         title: "Message sent!",
         description: "Thanks for reaching out. I'll get back to you soon.",
-      })
+      });
 
       setFormState({
         name: "",
         email: "",
         subject: "",
         message: "",
-      })
+      });
 
-      setIsSubmitting(false)
-    }, 1500)
-  }
+      setIsSubmitting(false);
+    }, 1500);
+  };
+
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <div className="min-h-screen bg-black text-white pb-20">
-      <PageHeader title="Contact Me" description="Get in touch for collaborations, questions, or just to say hello" />
+      <Navigation scrollY={scrollY} />
+
+      {/* Page Header */}
+      <PageHeader
+        title="Contact Me"
+        description="Get in touch for collaborations, questions, or just to say hello"
+      />
 
       <div className="container mt-12">
         <Tabs defaultValue="gracebot" className="w-full">
@@ -73,15 +92,15 @@ export default function ContactPage() {
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
-              >
+                transition={{ duration: 0.6 }}>
                 <h2 className="text-2xl font-bold font-space mb-6">
                   Let's <span className="text-emerald-400">Connect</span>
                 </h2>
 
                 <p className="text-gray-300 mb-8">
-                  I'm always open to discussing new projects, creative ideas, or opportunities to be part of your
-                  vision. Feel free to reach out using the form or through my social media profiles.
+                  I'm always open to discussing new projects, creative ideas, or
+                  opportunities to be part of your vision. Feel free to reach
+                  out using the form or through my social media profiles.
                 </p>
 
                 <div className="space-y-6">
@@ -115,8 +134,7 @@ export default function ContactPage() {
                         href="https://linkedin.com"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-gray-400 hover:text-emerald-400 transition-colors"
-                      >
+                        className="text-gray-400 hover:text-emerald-400 transition-colors">
                         linkedin.com/in/gracealiko
                       </Link>
                     </div>
@@ -132,8 +150,7 @@ export default function ContactPage() {
                         href="https://github.com"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-gray-400 hover:text-emerald-400 transition-colors"
-                      >
+                        className="text-gray-400 hover:text-emerald-400 transition-colors">
                         github.com/gracealiko
                       </Link>
                     </div>
@@ -144,8 +161,7 @@ export default function ContactPage() {
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
+                transition={{ duration: 0.6, delay: 0.2 }}>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div className="space-y-2">
@@ -210,7 +226,10 @@ export default function ContactPage() {
                     />
                   </div>
 
-                  <Button type="submit" className="w-full" disabled={isSubmitting}>
+                  <Button
+                    type="submit"
+                    className="w-full"
+                    disabled={isSubmitting}>
                     {isSubmitting ? (
                       <span className="flex items-center gap-2">
                         <span className="h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
@@ -230,13 +249,17 @@ export default function ContactPage() {
 
           <TabsContent value="gracebot">
             <div className="max-w-3xl mx-auto">
-              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}>
                 <div className="text-center mb-8">
                   <h2 className="text-2xl font-bold font-space mb-3">
                     Chat with <span className="text-emerald-400">GraceBot</span>
                   </h2>
                   <p className="text-gray-300">
-                    Have questions about my work, skills, or background? Ask GraceBot and get instant answers!
+                    Have questions about my work, skills, or background? Ask
+                    GraceBot and get instant answers!
                   </p>
                 </div>
 
@@ -247,5 +270,5 @@ export default function ContactPage() {
         </Tabs>
       </div>
     </div>
-  )
+  );
 }

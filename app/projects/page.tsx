@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,6 +8,7 @@ import { ExternalLink, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { PageHeader } from "@/components/page-header";
+import { Navigation } from "@/components/navigation";
 
 type ProjectCategory = "all" | "web" | "nlp" | "open-source";
 
@@ -112,8 +113,20 @@ export default function ProjectsPage() {
     (project) => activeCategory === "all" || project.category === activeCategory
   );
 
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div className="min-h-screen bg-black text-white pb-20">
+      <Navigation scrollY={scrollY} />
       <PageHeader
         title="Projects"
         description="A showcase of my work in web development and NLP research"

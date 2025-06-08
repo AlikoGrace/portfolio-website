@@ -1,17 +1,29 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Code, Download, FileText, Terminal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PageHeader } from "@/components/page-header";
+import { Navigation } from "@/components/navigation";
 
 export default function CVPage() {
   const [activeView, setActiveView] = useState<"normal" | "terminal">("normal");
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <div className="min-h-screen bg-black text-white pb-20">
+      <Navigation scrollY={scrollY} />
       <PageHeader
         title="Curriculum Vitae"
         description="My professional background, skills, and experience"
