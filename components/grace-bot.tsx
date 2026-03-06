@@ -25,7 +25,7 @@ const botResponses: Record<string, string> = {
   experience:
     "Grace has worked as a Senior Full Stack Developer at TechInnovate Ghana (2021-present), an NLP Research Assistant at African Languages Institute (2020-2021), and a Frontend Developer at Global Solutions Ltd (2018-2020).",
   education:
-    "Grace holds an MSc in Computational Linguistics from the University of Ghana (2019-2021) and a BSc in Computer Science from Kwame Nkrumah University of Science and Technology (2014-2018).",
+    "Grace a BSc in Computer Science from Kwame Nkrumah University of Science and Technology (2021-2014).",
   projects:
     "Grace has worked on several projects including an African Languages Translator, Twi NLP Toolkit, E-commerce Platform, and Language Learning App. You can check them out in the Projects section!",
   languages:

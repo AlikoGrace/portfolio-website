@@ -220,7 +220,7 @@ export default function AboutPage() {
                 <ExperienceItem
                   title="BSc in Computer Science"
                   company="Kwame Nkrumah University of Science and Technology"
-                  period="2020 - 2024"
+                  period="2021 - 2024"
                   description="Graduated with First Class Honors. Specialized in software engineering and artificial intelligence."
                 />
 

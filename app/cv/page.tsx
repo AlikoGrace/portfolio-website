@@ -35,7 +35,8 @@ export default function CVPage() {
             <Button
               variant={activeView === "normal" ? "default" : "outline"}
               onClick={() => setActiveView("normal")}
-              className="gap-2">
+              className="gap-2"
+            >
               <FileText className="h-4 w-4" />
               Standard View
             </Button>
@@ -43,7 +44,8 @@ export default function CVPage() {
             <Button
               variant={activeView === "terminal" ? "default" : "outline"}
               onClick={() => setActiveView("terminal")}
-              className="gap-2">
+              className="gap-2"
+            >
               <Terminal className="h-4 w-4" />
               Terminal View
             </Button>
@@ -69,7 +71,8 @@ function StandardCV() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="bg-gray-900/30 border border-gray-800 rounded-lg p-8 max-w-4xl mx-auto">
+      className="bg-gray-900/30 border border-gray-800 rounded-lg p-8 max-w-4xl mx-auto"
+    >
       <div className="mb-8 pb-8 border-b border-gray-800">
         <h2 className="text-3xl font-bold font-space mb-2">Grace Aliko</h2>
         <p className="text-emerald-400 text-lg mb-4">
@@ -171,7 +174,7 @@ function StandardCV() {
               <h4 className="text-lg font-bold">
                 BSc in Computer Science (Honors)
               </h4>
-              <span className="text-gray-400 text-sm">2019 - 2021</span>
+              <span className="text-gray-400 text-sm">2021 - 2024</span>
             </div>
             <p className="text-emerald-400 mb-2">
               Kwame Nkrumah UNiversity of Science and Technology
@@ -180,20 +183,6 @@ function StandardCV() {
               Focused on NLP techniques for low-resource languages. <br />
               Thesis: "LeqAfriQ: Dyslexia Detection in African Languages using
               Machine Learning"
-            </p>
-          </div>
-
-          <div>
-            <div className="flex justify-between items-start mb-1">
-              <h4 className="text-lg font-bold">BSc in Computer Science</h4>
-              <span className="text-gray-400 text-sm">2014 - 2018</span>
-            </div>
-            <p className="text-emerald-400 mb-2">
-              Kwame Nkrumah University of Science and Technology
-            </p>
-            <p className="text-gray-300">
-              Graduated with First Class Honors. <br />
-              Specialized in software engineering and artificial intelligence.
             </p>
           </div>
         </div>
@@ -279,7 +268,8 @@ function TerminalCV() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="bg-gray-900 border border-gray-800 rounded-lg overflow-hidden max-w-4xl mx-auto font-mono">
+      className="bg-gray-900 border border-gray-800 rounded-lg overflow-hidden max-w-4xl mx-auto font-mono"
+    >
       <div className="bg-gray-800 px-4 py-2 flex items-center gap-2">
         <div className="h-3 w-3 rounded-full bg-red-500" />
         <div className="h-3 w-3 rounded-full bg-yellow-500" />
