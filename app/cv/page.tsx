@@ -320,12 +320,8 @@ function TerminalCV() {
 
         <div className="mb-6">
           <p className="text-yellow-400 font-bold">$ ls -la ./education/</p>
-          <div className="grid grid-cols-12 text-gray-300 mt-2">
-            <div className="col-span-5">2019-2021</div>
-            <div className="col-span-7">
-              MSc in Computational Linguistics @ University of Ghana
-            </div>
-            <div className="col-span-5">2014-2018</div>
+    
+            <div className="col-span-5">2021-2024</div>
             <div className="col-span-7">BSc in Computer Science @ KNUST</div>
           </div>
         </div>
